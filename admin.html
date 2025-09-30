@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - IMS تفعيل أرقام</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <div class="logo-img">IMS</div>
+                        <div class="logo-text">لوحة التحكم</div>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">الموقع الرئيسي</a></li>
+                            <li><a href="#" id="logoutBtn" class="btn">تسجيل الخروج</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Admin Panel -->
+        <section class="admin-section">
+            <div class="container">
+                <div class="admin-panel" id="adminPanel">
+                    <div class="admin-header">
+                        <h2>لوحة إدارة IMS تفعيل أرقام</h2>
+                        <div class="admin-info">
+                            <span>مرحباً، المسؤول</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-stats">
+                        <div class="admin-stat">
+                            <div class="stat-number" id="totalNumberRequests">0</div>
+                            <div class="stat-label">طلبات الأرقام</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="stat-number" id="totalUserRequests">0</div>
+                            <div class="stat-label">طلبات الحسابات</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="stat-number" id="pendingRequests">0</div>
+                            <div class="stat-label">طلبات قيد التنفيذ</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="stat-number" id="completedRequests">0</div>
+                            <div class="stat-label">طلبات مكتملة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-tabs">
+                        <button class="tab-btn active" data-tab="number-requests">طلبات الأرقام</button>
+                        <button class="tab-btn" data-tab="user-requests">طلبات الحسابات</button>
+                        <button class="tab-btn" data-tab="countries">إدارة الدول</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="number-requests">
+                        <h3>طلبات الأرقام</h3>
+                        <div class="table-container">
+                            <table class="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الدولة</th>
+                                        <th>العدد</th>
+                                        <th>اسم المستخدم</th>
+                                        <th>التاريخ</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="numberRequestsTable">
+                                    <!-- سيتم ملء هذا الجدول بالطلبات من localStorage -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="user-requests">
+                        <h3>طلبات الحسابات</h3>
+                        <div class="table-container">
+                            <table class="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الاسم الثنائي</th>
+                                        <th>رقم الواتساب</th>
+                                        <th>التاريخ</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userRequestsTable">
+                                    <!-- سيتم ملء هذا الجدول بالطلبات من localStorage -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="countries">
+                        <h3>إدارة الدول</h3>
+                        <div class="add-country-form">
+                            <h4>إضافة دولة جديدة</h4>
+                            <form id="addCountryForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="newCountry">اسم الدولة</label>
+                                        <input type="text" id="newCountry" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newCountryFlag">رابط علم الدولة</label>
+                                        <input type="text" id="newCountryFlag" placeholder="https://example.com/flag.jpg" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn">إضافة الدولة</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="countries-list">
+                            <h4>الدول المتاحة حالياً</h4>
+                            <div class="countries-grid" id="adminCountriesGrid">
+                                <!-- سيتم ملء هذا القسم بالدول من localStorage -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // التحقق من تسجيل الدخول
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('adminLoggedIn');
+            if (!isLoggedIn) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // تحميل البيانات وعرضها
+            loadAdminData();
+            setupEventListeners();
+        });
+        
+        function loadAdminData() {
+            updateRequestsTables();
+            updateAdminStats();
+            updateAdminCountriesGrid();
+        }
+        
+        function setupEventListeners() {
+            // تبويبات لوحة التحكم
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // إزالة النشاط من جميع الأزرار والمحتويات
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // إضافة النشاط للعناصر المحددة
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // تسجيل الخروج
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('adminLoggedIn');
+                window.location.href = 'index.html';
+            });
+        }
+        
+        function updateAdminStats() {
+            const numberRequests = JSON.parse(localStorage.getItem('numberRequests')) || [];
+            const userRequests = JSON.parse(localStorage.getItem('userRequests')) || [];
+            
+            document.getElementById('totalNumberRequests').textContent = numberRequests.length;
+            document.getElementById('totalUserRequests').textContent = userRequests.length;
+            
+            const pendingRequests = [...numberRequests, ...userRequests].filter(req => !req.status || req.status === 'قيد التنفيذ').length;
+            const completedRequests = [...numberRequests, ...userRequests].filter(req => req.status === 'مكتمل').length;
+            
+            document.getElementById('pendingRequests').textContent = pendingRequests;
+            document.getElementById('completedRequests').textContent = completedRequests;
+        }
+        
+        function updateAdminCountriesGrid() {
+            const countries = JSON.parse(localStorage.getItem('countries')) || [];
+            const grid = document.getElementById('adminCountriesGrid');
+            grid.innerHTML = '';
+            
+            countries.forEach((country, index) => {
+                const countryCard = document.createElement('div');
+                countryCard.className = 'country-card admin-country-card';
+                countryCard.innerHTML = `
+                    <div class="country-flag" style="background-image: url('${country.flag}')"></div>
+                    <div class="country-name">${country.name}</div>
+                    <button class="delete-country-btn" onclick="deleteCountry(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                grid.appendChild(countryCard);
+            });
+        }
+        
+        function deleteCountry(index) {
+            if (confirm('هل أنت متأكد من حذف هذه الدولة؟')) {
+                const countries = JSON.parse(localStorage.getItem('countries')) || [];
+                countries.splice(index, 1);
+                localStorage.setItem('countries', JSON.stringify(countries));
+                updateAdminCountriesGrid();
+                
+                // تحديث القائمة في الصفحة الرئيسية أيضاً
+                if (typeof updateCountriesGrid === 'function') {
+                    updateCountriesGrid();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
