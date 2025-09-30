@@ -34,13 +34,14 @@
                                     <!-- سيتم ملء الإشعارات هنا -->
                                 </div>
                             </li>
-                            <li><a href="admin.html" class="btn btn-secondary">دخول المسؤول</a></li>
+                            <li><a href="admin.html" class="btn btn-secondary" id="adminLink">دخول المسؤول</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
 
+        <!-- باقي المحتوى يبقى كما هو -->
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="container">
@@ -214,6 +215,26 @@
                 <p>International Messaging Services &copy; 2023 - جميع الحقوق محفوظة</p>
             </div>
         </footer>
+    </div>
+
+    <!-- نافذة تسجيل الدخول -->
+    <div id="loginModal" class="modal">
+        <div class="login-form">
+            <h2>تسجيل الدخول للمسؤول</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">اسم المستخدم</label>
+                    <input type="text" id="adminUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">كلمة المرور</label>
+                    <input type="password" id="adminPassword" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">دخول</button>
+                <button type="button" id="closeLoginModal" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">إلغاء</button>
+            </form>
+            <div id="loginStatus" class="status-message"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
