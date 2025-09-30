@@ -8,120 +8,158 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="overlay">
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <div class="logo-img">IMS</div>
-                        <div class="logo-text">تفعيل أرقام</div>
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home">الرئيسية</a></li>
-                            <li><a href="#countries">الدول المتاحة</a></li>
-                            <li><a href="#order">طلب خدمة</a></li>
-                            <li><a href="#about">عن الخدمة</a></li>
-                            <li><a href="#instructions">تعليمات الاختبار</a></li>
-                            <li><a href="#contact">اتصل بنا</a></li>
-                            <li>
-                                <a href="#" id="notificationIcon">
-                                    <i class="fas fa-bell"></i>
-                                    <span class="notification-badge" id="notificationCount">0</span>
-                                </a>
-                                <div class="notifications-panel" id="notificationsPanel">
-                                    <!-- سيتم ملء الإشعارات هنا -->
-                                </div>
-                            </li>
-                            <li><a href="admin.html" class="btn btn-secondary" id="adminLink">دخول المسؤول</a></li>
-                        </ul>
-                    </nav>
+    <!-- الهيدر الرئيسي -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- اللوجو -->
+                <div class="logo">
+                    <div class="logo-img">IMS</div>
+                    <div class="logo-text">تفعيل أرقام</div>
                 </div>
-            </div>
-        </header>
 
-        <!-- باقي المحتوى يبقى كما هو -->
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <h1>IMS تفعيل أرقام لطلب أرقام وعمل حسابات جديد في منصة</h1>
-                <p>International Messaging Services - احصل على أرقام تابعة لشركات الاتصالات لتلقي رسائل التحقق بجودة عالية واستمرارية عمل</p>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value">47.9K</div>
-                        <div class="stat-label">طلب منفذ</div>
+                <!-- القائمة الرئيسية للكمبيوتر -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                        <li><a href="#countries" class="nav-link">الدول المتاحة</a></li>
+                        <li><a href="#order" class="nav-link">طلب خدمة</a></li>
+                        <li><a href="#about" class="nav-link">عن الخدمة</a></li>
+                        <li><a href="#instructions" class="nav-link">تعليمات الاختبار</a></li>
+                        <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+
+                <!-- أيقونات الهيدر للكمبيوتر -->
+                <div class="header-actions">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">0</span>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value">17min</div>
-                        <div class="stat-label">متوسط وقت التنفيذ</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">40.6%</div>
-                        <div class="stat-label">نسبة النجاح</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">0.7%</div>
-                        <div class="stat-label">نسبة الخطأ</div>
-                    </div>
+                    <a href="admin.html" class="btn btn-secondary admin-btn">دخول المسؤول</a>
                 </div>
-                
-                <a href="#order" class="btn">اطلب الآن</a>
+
+                <!-- زر القائمة للموبايل -->
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- القائمة المنزلقة للموبايل -->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-header">
+                <div class="logo">
+                    <div class="logo-img">IMS</div>
+                    <div class="logo-text">تفعيل أرقام</div>
+                </div>
+                <button class="mobile-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-list">
+                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#countries" class="nav-link">الدول المتاحة</a></li>
+                <li><a href="#order" class="nav-link">طلب خدمة</a></li>
+                <li><a href="#about" class="nav-link">عن الخدمة</a></li>
+                <li><a href="#instructions" class="nav-link">تعليمات الاختبار</a></li>
+                <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
+                <li>
+                    <div class="mobile-actions">
+                        <a href="admin.html" class="btn btn-secondary">دخول المسؤول</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- قسم الهيرو -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">IMS تفعيل أرقام لطلب أرقام وعمل حسابات جديد في منصة</h1>
+                    <p class="hero-description">
+                        International Messaging Services - احصل على أرقام تابعة لشركات الاتصالات لتلقي رسائل التحقق بجودة عالية واستمرارية عمل
+                    </p>
+                    
+                    <!-- الإحصائيات -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">47.9K</div>
+                            <div class="stat-label">طلب منفذ</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">17min</div>
+                            <div class="stat-label">متوسط وقت التنفيذ</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">40.6%</div>
+                            <div class="stat-label">نسبة النجاح</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">0.7%</div>
+                            <div class="stat-label">نسبة الخطأ</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#order" class="btn btn-primary hero-cta">اطلب الآن</a>
+                </div>
             </div>
         </section>
 
-        <!-- Countries Section -->
-        <section id="countries">
+        <!-- قسم الدول المتاحة -->
+        <section id="countries" class="countries-section">
             <div class="container">
                 <h2 class="section-title">الدول المتاحة</h2>
                 <div class="countries-grid" id="countriesGrid">
-                    <!-- سيتم ملء هذا القسم بالدول من JavaScript -->
+                    <!-- سيتم ملء الدول من JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Order Section -->
-        <section id="order">
+        <!-- قسم طلب الخدمة -->
+        <section id="order" class="order-section">
             <div class="container">
                 <h2 class="section-title">طلب الخدمات</h2>
                 <div class="order-forms">
-                    <!-- Order Numbers Form -->
-                    <div class="form-container">
+                    <!-- نموذج طلب الأرقام -->
+                    <div class="form-card">
                         <h3 class="form-title">طلب أرقام</h3>
-                        <form id="orderNumbersForm">
+                        <form id="orderNumbersForm" class="order-form">
                             <div class="form-group">
                                 <label for="country">الدولة</label>
-                                <select id="country" required>
+                                <select id="country" class="form-input" required>
                                     <option value="">اختر الدولة</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="quantity">العدد</label>
-                                <input type="number" id="quantity" min="1" max="100" required>
+                                <input type="number" id="quantity" class="form-input" min="1" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="username">اسم المستخدم</label>
-                                <input type="text" id="username" required>
+                                <input type="text" id="username" class="form-input" required>
                             </div>
-                            <button type="submit" class="btn" style="width: 100%;">طلب</button>
+                            <button type="submit" class="btn btn-primary form-submit">طلب</button>
                         </form>
                         <div id="orderNumbersStatus" class="status-message"></div>
                     </div>
 
-                    <!-- Order User Form -->
-                    <div class="form-container">
+                    <!-- نموذج طلب الحساب -->
+                    <div class="form-card">
                         <h3 class="form-title">طلب حساب مستخدم</h3>
-                        <form id="orderUserForm">
+                        <form id="orderUserForm" class="order-form">
                             <div class="form-group">
                                 <label for="binaryName">الاسم الثنائي (إنجليزي)</label>
-                                <input type="text" id="binaryName" required>
+                                <input type="text" id="binaryName" class="form-input" required>
                             </div>
                             <div class="form-group">
                                 <label for="whatsappNumber">رقم الواتساب</label>
-                                <input type="text" id="whatsappNumber" required>
+                                <input type="text" id="whatsappNumber" class="form-input" required>
                             </div>
-                            <button type="submit" class="btn" style="width: 100%;">طلب</button>
+                            <button type="submit" class="btn btn-primary form-submit">طلب</button>
                         </form>
                         <div id="orderUserStatus" class="status-message"></div>
                     </div>
@@ -129,37 +167,45 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about">
+        <!-- قسم عن الخدمة -->
+        <section id="about" class="about-section">
             <div class="container">
                 <h2 class="section-title">عن الخدمة</h2>
                 <div class="about-content">
-                    <h3>ما هي خدمة تفعيل أرقام التحقق؟</h3>
-                    <p>
-                        خدمتنا تتيح لك طلب أرقام تابعة لشركات الاتصالات لتلقي رسائل التحقق من التطبيقات والمواقع المختلفة. 
-                        نحن نضمن جودة الأرقام واستمرارية عملها، مما يضمن لك تجربة سلسة وفعالة.
-                    </p>
+                    <div class="about-text">
+                        <h3>ما هي خدمة تفعيل أرقام التحقق؟</h3>
+                        <p>
+                            خدمتنا تتيح لك طلب أرقام تابعة لشركات الاتصالات لتلقي رسائل التحقق من التطبيقات والمواقع المختلفة. 
+                            نحن نضمن جودة الأرقام واستمرارية عملها، مما يضمن لك تجربة سلسة وفعالة.
+                        </p>
+                        
+                        <h3>كيف تعمل الخدمة؟</h3>
+                        <p>
+                            العملية بسيطة وسهلة، تشبه تمامًا استخدام الواتساب على الرقم. 
+                            تقوم بطلب الرقم من خلال موقعنا، ثم تستخدمه في أي موقع أو تطبيق تحتاج إليه. 
+                            عندما تطلب رسالة تحقق، ستصل إلى الرقم الذي طلبته، ويمكنك استخدامها للتحقق من حساباتك.
+                        </p>
+                    </div>
                     
-                    <h3>كيف تعمل الخدمة؟</h3>
-                    <p>
-                        العملية بسيطة وسهلة، تشبه تمامًا استخدام الواتساب على الرقم. 
-                        تقوم بطلب الرقم من خلال موقعنا، ثم تستخدمه في أي موقع أو تطبيق تحتاج إليه. 
-                        عندما تطلب رسالة تحقق، ستصل إلى الرقم الذي طلبته، ويمكنك استخدامها للتحقق من حساباتك.
-                    </p>
-                    
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
                             <h4>سريع وسهل</h4>
                             <p>عملية الطلب والاستخدام بسيطة وسريعة</p>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-shield-alt"></i>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
                             <h4>آمن ومضمون</h4>
                             <p>أرقام ذات جودة عالية ومضمونة العمل</p>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-clock"></i>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
                             <h4>متاح دائمًا</h4>
                             <p>الخدمة متاحة في أي وقت تحتاجه</p>
                         </div>
@@ -168,70 +214,82 @@
             </div>
         </section>
 
-        <!-- Instructions Section -->
-        <section id="instructions">
+        <!-- قسم التعليمات -->
+        <section id="instructions" class="instructions-section">
             <div class="container">
                 <h2 class="section-title">تعليمات اختبار الأرقام</h2>
-                <div class="instructions">
-                    <h3>زميل/ة فريق الاختبار،</h3>
-                    <p><strong>الهدف:</strong> التحقق من صلاحية وأداء أرقام الاتصالات المستخدمة في أنظمتنا.</p>
-                    
-                    <h4>الخطوات:</h4>
-                    <ol>
-                        <li>انسخ الرقم من لوحة الأرقام.</li>
-                        <li>افتح الموقع: <a href="https://imssms.org/login" target="_blank">https://imssms.org/login</a></li>
-                        <li>اطلب رسالة تحقق قصيرة (OTP) إلى الرقم.</li>
-                        <li>سجل استلام/عدم استلام الرمز، زمن الوصول، وأي أخطاء.</li>
-                    </ol>
-                    
-                    <div class="note">
-                        <strong>ملاحظات:</strong> حافظ على توثيق كل عملية برقم المهمة والتاريخ والوقت.
+                <div class="instructions-content">
+                    <div class="instructions-card">
+                        <h3>زميل/ة فريق الاختبار،</h3>
+                        <p class="instruction-goal"><strong>الهدف:</strong> التحقق من صلاحية وأداء أرقام الاتصالات المستخدمة في أنظمتنا.</p>
+                        
+                        <h4>الخطوات:</h4>
+                        <ol class="steps-list">
+                            <li>انسخ الرقم من لوحة الأرقام.</li>
+                            <li>افتح الموقع: <a href="https://imssms.org/login" target="_blank">https://imssms.org/login</a></li>
+                            <li>اطلب رسالة تحقق قصيرة (OTP) إلى الرقم.</li>
+                            <li>سجل استلام/عدم استلام الرمز، زمن الوصول، وأي أخطاء.</li>
+                        </ol>
+                        
+                        <div class="note-box">
+                            <strong>ملاحظات:</strong> حافظ على توثيق كل عملية برقم المهمة والتاريخ والوقت.
+                        </div>
+                        
+                        <div class="signature">
+                            شكراً لتعاونكم. — فريق الجودة / IMS
+                        </div>
                     </div>
-                    
-                    <p style="margin-top: 1rem; text-align: center; font-weight: bold;">
-                        شكراً لتعاونكم. — فريق الجودة / IMS
-                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
+        <!-- قسم الاتصال -->
+        <section id="contact" class="contact-section">
             <div class="container">
                 <h2 class="section-title">اتصل بنا</h2>
-                <div class="about-content">
-                    <p>لأي استفسارات أو مساعدة، يرجى التواصل معنا عبر الواتساب فقط:</p>
-                    <div class="contact-info">
-                        <p><i class="fab fa-whatsapp"></i> 01276205280</p>
-                        <p><i class="fab fa-whatsapp"></i> 01011079060</p>
+                <div class="contact-content">
+                    <div class="contact-card">
+                        <p>لأي استفسارات أو مساعدة، يرجى التواصل معنا عبر الواتساب فقط:</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>01276205280</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>01011079060</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>International Messaging Services &copy; 2023 - جميع الحقوق محفوظة</p>
-            </div>
-        </footer>
-    </div>
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>International Messaging Services &copy; 2023 - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
 
     <!-- نافذة تسجيل الدخول -->
     <div id="loginModal" class="modal">
-        <div class="login-form">
-            <h2>تسجيل الدخول للمسؤول</h2>
-            <form id="adminLoginForm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تسجيل الدخول للمسؤول</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="adminLoginForm" class="modal-form">
                 <div class="form-group">
                     <label for="adminUsername">اسم المستخدم</label>
-                    <input type="text" id="adminUsername" required>
+                    <input type="text" id="adminUsername" class="form-input" required>
                 </div>
                 <div class="form-group">
                     <label for="adminPassword">كلمة المرور</label>
-                    <input type="password" id="adminPassword" required>
+                    <input type="password" id="adminPassword" class="form-input" required>
                 </div>
-                <button type="submit" class="btn" style="width: 100%;">دخول</button>
-                <button type="button" id="closeLoginModal" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">إلغاء</button>
+                <button type="submit" class="btn btn-primary modal-submit">دخول</button>
             </form>
             <div id="loginStatus" class="status-message"></div>
         </div>
