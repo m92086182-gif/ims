@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMS تفعيل أرقام</title>
+    <title>لوحة التحكم - IMS تفعيل أرقام</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,228 +15,334 @@
                 <div class="header-content">
                     <div class="logo">
                         <div class="logo-img">IMS</div>
-                        <div class="logo-text">تفعيل أرقام</div>
+                        <div class="logo-text">لوحة التحكم</div>
                     </div>
                     <nav>
                         <ul>
-                            <li><a href="#home">الرئيسية</a></li>
-                            <li><a href="#countries">الدول المتاحة</a></li>
-                            <li><a href="#order">طلب خدمة</a></li>
-                            <li><a href="#about">عن الخدمة</a></li>
-                            <li><a href="#instructions">تعليمات الاختبار</a></li>
-                            <li><a href="#contact">اتصل بنا</a></li>
-                            <li>
-                                <a href="#" id="notificationIcon">
-                                    <i class="fas fa-bell"></i>
-                                    <span class="notification-badge" id="notificationCount">0</span>
-                                </a>
-                                <div class="notifications-panel" id="notificationsPanel">
-                                    <!-- سيتم ملء الإشعارات هنا -->
-                                </div>
-                            </li>
-                            <li><a href="admin.html" class="btn btn-secondary" id="adminLink">دخول المسؤول</a></li>
+                            <li><a href="index.html">الموقع الرئيسي</a></li>
+                            <li><a href="#" id="logoutBtn" class="btn">تسجيل الخروج</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
 
-        <!-- باقي المحتوى يبقى كما هو -->
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="container">
-                <h1>IMS تفعيل أرقام لطلب أرقام وعمل حسابات جديد في منصة</h1>
-                <p>International Messaging Services - احصل على أرقام تابعة لشركات الاتصالات لتلقي رسائل التحقق بجودة عالية واستمرارية عمل</p>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-value">47.9K</div>
-                        <div class="stat-label">طلب منفذ</div>
+        <!-- نافذة تسجيل الدخول -->
+        <div id="adminLoginModal" class="modal">
+            <div class="login-form">
+                <h2>تسجيل الدخول للمسؤول</h2>
+                <form id="adminLoginFormPage">
+                    <div class="form-group">
+                        <label for="adminUsernamePage">اسم المستخدم</label>
+                        <input type="text" id="adminUsernamePage" required>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value">17min</div>
-                        <div class="stat-label">متوسط وقت التنفيذ</div>
+                    <div class="form-group">
+                        <label for="adminPasswordPage">كلمة المرور</label>
+                        <input type="password" id="adminPasswordPage" required>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value">40.6%</div>
-                        <div class="stat-label">نسبة النجاح</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">0.7%</div>
-                        <div class="stat-label">نسبة الخطأ</div>
-                    </div>
-                </div>
-                
-                <a href="#order" class="btn">اطلب الآن</a>
+                    <button type="submit" class="btn" style="width: 100%;">دخول</button>
+                </form>
+                <div id="loginStatusPage" class="status-message"></div>
             </div>
-        </section>
-
-        <!-- Countries Section -->
-        <section id="countries">
-            <div class="container">
-                <h2 class="section-title">الدول المتاحة</h2>
-                <div class="countries-grid" id="countriesGrid">
-                    <!-- سيتم ملء هذا القسم بالدول من JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Order Section -->
-        <section id="order">
-            <div class="container">
-                <h2 class="section-title">طلب الخدمات</h2>
-                <div class="order-forms">
-                    <!-- Order Numbers Form -->
-                    <div class="form-container">
-                        <h3 class="form-title">طلب أرقام</h3>
-                        <form id="orderNumbersForm">
-                            <div class="form-group">
-                                <label for="country">الدولة</label>
-                                <select id="country" required>
-                                    <option value="">اختر الدولة</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="quantity">العدد</label>
-                                <input type="number" id="quantity" min="1" max="100" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="username">اسم المستخدم</label>
-                                <input type="text" id="username" required>
-                            </div>
-                            <button type="submit" class="btn" style="width: 100%;">طلب</button>
-                        </form>
-                        <div id="orderNumbersStatus" class="status-message"></div>
-                    </div>
-
-                    <!-- Order User Form -->
-                    <div class="form-container">
-                        <h3 class="form-title">طلب حساب مستخدم</h3>
-                        <form id="orderUserForm">
-                            <div class="form-group">
-                                <label for="binaryName">الاسم الثنائي (إنجليزي)</label>
-                                <input type="text" id="binaryName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="whatsappNumber">رقم الواتساب</label>
-                                <input type="text" id="whatsappNumber" required>
-                            </div>
-                            <button type="submit" class="btn" style="width: 100%;">طلب</button>
-                        </form>
-                        <div id="orderUserStatus" class="status-message"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about">
-            <div class="container">
-                <h2 class="section-title">عن الخدمة</h2>
-                <div class="about-content">
-                    <h3>ما هي خدمة تفعيل أرقام التحقق؟</h3>
-                    <p>
-                        خدمتنا تتيح لك طلب أرقام تابعة لشركات الاتصالات لتلقي رسائل التحقق من التطبيقات والمواقع المختلفة. 
-                        نحن نضمن جودة الأرقام واستمرارية عملها، مما يضمن لك تجربة سلسة وفعالة.
-                    </p>
-                    
-                    <h3>كيف تعمل الخدمة؟</h3>
-                    <p>
-                        العملية بسيطة وسهلة، تشبه تمامًا استخدام الواتساب على الرقم. 
-                        تقوم بطلب الرقم من خلال موقعنا، ثم تستخدمه في أي موقع أو تطبيق تحتاج إليه. 
-                        عندما تطلب رسالة تحقق، ستصل إلى الرقم الذي طلبته، ويمكنك استخدامها للتحقق من حساباتك.
-                    </p>
-                    
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <h4>سريع وسهل</h4>
-                            <p>عملية الطلب والاستخدام بسيطة وسريعة</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <h4>آمن ومضمون</h4>
-                            <p>أرقام ذات جودة عالية ومضمونة العمل</p>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-clock"></i>
-                            <h4>متاح دائمًا</h4>
-                            <p>الخدمة متاحة في أي وقت تحتاجه</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instructions Section -->
-        <section id="instructions">
-            <div class="container">
-                <h2 class="section-title">تعليمات اختبار الأرقام</h2>
-                <div class="instructions">
-                    <h3>زميل/ة فريق الاختبار،</h3>
-                    <p><strong>الهدف:</strong> التحقق من صلاحية وأداء أرقام الاتصالات المستخدمة في أنظمتنا.</p>
-                    
-                    <h4>الخطوات:</h4>
-                    <ol>
-                        <li>انسخ الرقم من لوحة الأرقام.</li>
-                        <li>افتح الموقع: <a href="https://imssms.org/login" target="_blank">https://imssms.org/login</a></li>
-                        <li>اطلب رسالة تحقق قصيرة (OTP) إلى الرقم.</li>
-                        <li>سجل استلام/عدم استلام الرمز، زمن الوصول، وأي أخطاء.</li>
-                    </ol>
-                    
-                    <div class="note">
-                        <strong>ملاحظات:</strong> حافظ على توثيق كل عملية برقم المهمة والتاريخ والوقت.
-                    </div>
-                    
-                    <p style="margin-top: 1rem; text-align: center; font-weight: bold;">
-                        شكراً لتعاونكم. — فريق الجودة / IMS
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title">اتصل بنا</h2>
-                <div class="about-content">
-                    <p>لأي استفسارات أو مساعدة، يرجى التواصل معنا عبر الواتساب فقط:</p>
-                    <div class="contact-info">
-                        <p><i class="fab fa-whatsapp"></i> 01276205280</p>
-                        <p><i class="fab fa-whatsapp"></i> 01011079060</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>International Messaging Services &copy; 2023 - جميع الحقوق محفوظة</p>
-            </div>
-        </footer>
-    </div>
-
-    <!-- نافذة تسجيل الدخول -->
-    <div id="loginModal" class="modal">
-        <div class="login-form">
-            <h2>تسجيل الدخول للمسؤول</h2>
-            <form id="adminLoginForm">
-                <div class="form-group">
-                    <label for="adminUsername">اسم المستخدم</label>
-                    <input type="text" id="adminUsername" required>
-                </div>
-                <div class="form-group">
-                    <label for="adminPassword">كلمة المرور</label>
-                    <input type="password" id="adminPassword" required>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">دخول</button>
-                <button type="button" id="closeLoginModal" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">إلغاء</button>
-            </form>
-            <div id="loginStatus" class="status-message"></div>
         </div>
+
+        <!-- لوحة التحكم (مخفية في البداية) -->
+        <section class="admin-section" id="adminSection" style="display: none;">
+            <div class="container">
+                <div class="admin-panel" id="adminPanel">
+                    <div class="admin-header">
+                        <h2>لوحة إدارة IMS تفعيل أرقام</h2>
+                        <div class="admin-info">
+                            <span>مرحباً، المسؤول</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-stats">
+                        <div class="admin-stat">
+                            <div class="stat-number" id="totalNumberRequests">0</div>
+                            <div class="stat-label">طلبات الأرقام</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="stat-number" id="totalUserRequests">0</div>
+                            <div class="stat-label">طلبات الحسابات</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="stat-number" id="pendingRequests">0</div>
+                            <div class="stat-label">طلبات قيد التنفيذ</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="stat-number" id="completedRequests">0</div>
+                            <div class="stat-label">طلبات مكتملة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-tabs">
+                        <button class="tab-btn active" data-tab="number-requests">طلبات الأرقام</button>
+                        <button class="tab-btn" data-tab="user-requests">طلبات الحسابات</button>
+                        <button class="tab-btn" data-tab="countries">إدارة الدول</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="number-requests">
+                        <h3>طلبات الأرقام</h3>
+                        <div class="table-container">
+                            <table class="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الدولة</th>
+                                        <th>العدد</th>
+                                        <th>اسم المستخدم</th>
+                                        <th>التاريخ</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="numberRequestsTable">
+                                    <!-- سيتم ملء هذا الجدول بالطلبات من localStorage -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="user-requests">
+                        <h3>طلبات الحسابات</h3>
+                        <div class="table-container">
+                            <table class="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الاسم الثنائي</th>
+                                        <th>رقم الواتساب</th>
+                                        <th>التاريخ</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userRequestsTable">
+                                    <!-- سيتم ملء هذا الجدول بالطلبات من localStorage -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="countries">
+                        <h3>إدارة الدول</h3>
+                        <div class="add-country-form">
+                            <h4>إضافة دولة جديدة</h4>
+                            <form id="addCountryForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="newCountry">اسم الدولة</label>
+                                        <input type="text" id="newCountry" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newCountryFlag">رابط علم الدولة</label>
+                                        <input type="text" id="newCountryFlag" placeholder="https://example.com/flag.jpg" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn">إضافة الدولة</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="countries-list">
+                            <h4>الدول المتاحة حالياً</h4>
+                            <div class="countries-grid" id="adminCountriesGrid">
+                                <!-- سيتم ملء هذا القسم بالدول من localStorage -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // نظام إدارة الجلسات المحسّن
+        class SessionManager {
+            constructor() {
+                this.sessionKey = 'ims_admin_session';
+                this.sessionTimeout = 24 * 60 * 60 * 1000; // 24 ساعة
+            }
+
+            isLoggedIn() {
+                const session = this.getSession();
+                if (!session) return false;
+
+                // التحقق من انتهاء الجلسة
+                if (Date.now() - session.loginTime > this.sessionTimeout) {
+                    this.logout();
+                    return false;
+                }
+
+                return true;
+            }
+
+            login(username, password) {
+                // بيانات الدخول الثابتة
+                const validCredentials = {
+                    username: 'Mohamed77ngq',
+                    password: 'Mohamed77ngq'
+                };
+
+                if (username === validCredentials.username && password === validCredentials.password) {
+                    const session = {
+                        loggedIn: true,
+                        username: username,
+                        loginTime: Date.now()
+                    };
+                    localStorage.setItem(this.sessionKey, JSON.stringify(session));
+                    return true;
+                }
+                return false;
+            }
+
+            logout() {
+                localStorage.removeItem(this.sessionKey);
+            }
+
+            getSession() {
+                try {
+                    return JSON.parse(localStorage.getItem(this.sessionKey));
+                } catch (e) {
+                    return null;
+                }
+            }
+        }
+
+        // تهيئة مدير الجلسات
+        const sessionManager = new SessionManager();
+
+        // التحقق من تسجيل الدخول عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminSection = document.getElementById('adminSection');
+            const loginModal = document.getElementById('adminLoginModal');
+
+            if (sessionManager.isLoggedIn()) {
+                // إذا كان مسجلاً دخول، إظهار لوحة التحكم
+                adminSection.style.display = 'block';
+                loginModal.style.display = 'none';
+                loadAdminData();
+                setupEventListeners();
+            } else {
+                // إذا لم يكن مسجلاً دخول، إظهار نافذة التسجيل
+                adminSection.style.display = 'none';
+                loginModal.style.display = 'flex';
+            }
+
+            // معالجة تسجيل الدخول
+            const loginForm = document.getElementById('adminLoginFormPage');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const username = document.getElementById('adminUsernamePage').value;
+                    const password = document.getElementById('adminPasswordPage').value;
+                    const statusElement = document.getElementById('loginStatusPage');
+                    
+                    if (sessionManager.login(username, password)) {
+                        adminSection.style.display = 'block';
+                        loginModal.style.display = 'none';
+                        loadAdminData();
+                        setupEventListeners();
+                    } else {
+                        showStatus(statusElement, 'اسم المستخدم أو كلمة المرور غير صحيحة', false);
+                    }
+                });
+            }
+        });
+        
+        function loadAdminData() {
+            updateRequestsTables();
+            updateAdminStats();
+            updateAdminCountriesGrid();
+        }
+        
+        function setupEventListeners() {
+            // تبويبات لوحة التحكم
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // إزالة النشاط من جميع الأزرار والمحتويات
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // إضافة النشاط للعناصر المحددة
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // تسجيل الخروج
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                sessionManager.logout();
+                window.location.href = 'index.html';
+            });
+        }
+        
+        function updateAdminStats() {
+            const numberRequests = JSON.parse(localStorage.getItem('numberRequests')) || [];
+            const userRequests = JSON.parse(localStorage.getItem('userRequests')) || [];
+            
+            document.getElementById('totalNumberRequests').textContent = numberRequests.length;
+            document.getElementById('totalUserRequests').textContent = userRequests.length;
+            
+            const pendingRequests = [...numberRequests, ...userRequests].filter(req => !req.status || req.status === 'قيد التنفيذ').length;
+            const completedRequests = [...numberRequests, ...userRequests].filter(req => req.status === 'مكتمل').length;
+            
+            document.getElementById('pendingRequests').textContent = pendingRequests;
+            document.getElementById('completedRequests').textContent = completedRequests;
+        }
+        
+        function updateAdminCountriesGrid() {
+            const countries = JSON.parse(localStorage.getItem('countries')) || [];
+            const grid = document.getElementById('adminCountriesGrid');
+            grid.innerHTML = '';
+            
+            countries.forEach((country, index) => {
+                const countryCard = document.createElement('div');
+                countryCard.className = 'country-card admin-country-card';
+                countryCard.innerHTML = `
+                    <div class="country-flag" style="background-image: url('${country.flag}')"></div>
+                    <div class="country-name">${country.name}</div>
+                    <button class="delete-country-btn" onclick="deleteCountry(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                grid.appendChild(countryCard);
+            });
+        }
+        
+        function deleteCountry(index) {
+            if (confirm('هل أنت متأكد من حذف هذه الدولة؟')) {
+                const countries = JSON.parse(localStorage.getItem('countries')) || [];
+                countries.splice(index, 1);
+                localStorage.setItem('countries', JSON.stringify(countries));
+                updateAdminCountriesGrid();
+                
+                // تحديث القائمة في الصفحة الرئيسية أيضاً
+                if (typeof updateCountriesGrid === 'function') {
+                    updateCountriesGrid();
+                }
+            }
+        }
+
+        // دالة مساعدة لعرض رسائل الحالة
+        function showStatus(element, message, isSuccess) {
+            if (element) {
+                element.textContent = message;
+                element.className = `status-message ${isSuccess ? 'success' : 'error'}`;
+                element.style.display = 'block';
+                
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
 </body>
 </html>
